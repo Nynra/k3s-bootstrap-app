@@ -138,7 +138,9 @@ longhorn:
     ingressUrl: "longhorn.example.com"
 
 reflector:
-  namespace: reflector
+  # Reflector is only used to sync certificates between namespaces
+  # so should be in the cert-manager namespace
+  # namespace: reflector
   targetRevision: 9.1.11
 
 eks:
