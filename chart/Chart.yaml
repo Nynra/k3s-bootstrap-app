@@ -1,0 +1,5 @@
+apiVersion: v2
+name: bootstrapApp
+description: A Helm chart that deploys the core applications that are essential for the cluster's operation.
+type: application
+version: 0.1.0
