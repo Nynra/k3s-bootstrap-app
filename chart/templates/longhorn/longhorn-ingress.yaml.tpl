@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.longhorn.namespace }}
   annotations:
     kubernetes.io/ingress.class: traefik-external
-    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   entryPoints:
     - websecure
