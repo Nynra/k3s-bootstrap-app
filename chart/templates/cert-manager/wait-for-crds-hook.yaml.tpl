@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.certManager.namespace }}
   annotations:
     argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "-19"
+    argocd.argoproj.io/sync-wave: "11"
     # argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:

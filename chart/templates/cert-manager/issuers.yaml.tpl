@@ -5,7 +5,7 @@ kind: ClusterIssuer
 metadata:
   name: {{ .name }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-18"
+    argocd.argoproj.io/sync-wave: "12"
 spec:
   acme:
     server: {{ .server }}

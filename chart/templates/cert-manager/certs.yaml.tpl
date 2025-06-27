@@ -6,7 +6,7 @@ metadata:
   name: {{ .commonName | replace "." "-" }}-cert
   namespace: {{ .namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-17"
+    argocd.argoproj.io/sync-wave: "13"
 spec:
   secretName: {{ .secretName }}
   commonName: {{ .commonName }}
