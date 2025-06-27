@@ -4,7 +4,7 @@ metadata:
   name: external-secrets-operator
   namespace: {{ .Values.global.argocdConfig.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-29"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   destination:
     namespace: {{ .Values.eks.onepasswordOperator.namespace }}

@@ -3,7 +3,7 @@ kind: ClusterRoleBinding
 metadata:
   name: dashboard-user
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "31"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

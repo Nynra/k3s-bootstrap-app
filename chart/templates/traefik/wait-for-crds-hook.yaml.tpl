@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.traefik.namespace }}
   annotations:
     argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "-8"
+    argocd.argoproj.io/sync-wave: "22"
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:

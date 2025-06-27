@@ -4,7 +4,7 @@ metadata:
   name: crowdsec-credentials
   namespace: {{ .Values.crowdsec.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-25"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   secretStoreRef:
     kind: ClusterSecretStore

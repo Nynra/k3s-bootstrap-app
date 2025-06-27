@@ -2,9 +2,9 @@ apiVersion: traefik.io/v1alpha1
 kind: TraefikService
 metadata:
   name: lan-only-ref
-  namespace: {{ .Values.longhorn.namespace }}
+  namespace: {{ .Values.kubDashboard.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-4"
+    argocd.argoproj.io/sync-wave: "31"
 spec:
   mirroring:
     name: lan-only

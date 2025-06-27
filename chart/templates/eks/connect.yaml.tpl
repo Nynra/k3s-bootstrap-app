@@ -5,7 +5,7 @@ metadata:
   name: 1password-connect
   namespace: {{ .Values.global.argocdConfig.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-30"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   destination:
     namespace: {{ .Values.eks.onepasswordConnect.namespace }}

@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.eks.onepasswordConnect.namespace }}
   annotations:
     argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "-29"
+    argocd.argoproj.io/sync-wave: "2"
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:

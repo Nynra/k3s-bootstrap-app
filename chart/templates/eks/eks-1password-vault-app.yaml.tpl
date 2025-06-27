@@ -3,7 +3,7 @@ kind: ClusterSecretStore
 metadata:
   name: {{ .Values.mainVault.name }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-28"
+    argocd.argoproj.io/sync-wave: "3"
     # Cannot validate as the needed CRD is not installed yet
     argocd.argoproj.io/sync-options: Validate=false
 spec:

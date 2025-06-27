@@ -1,11 +1,11 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: crowdsec-bouncer
+  name: redirect-to-https
   namespace: {{ .Values.traefik.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-7"
+    argocd.argoproj.io/sync-wave: "23"
 spec:
-  plugin:
-    crowdsec-bouncer:
-      enabled: true
+  redirectScheme:
+    scheme: https
+    permanent: true

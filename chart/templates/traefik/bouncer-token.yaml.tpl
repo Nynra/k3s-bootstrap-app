@@ -4,7 +4,7 @@ metadata:
   name: crowdsec-bouncer-token
   namespace: {{ .Values.traefik.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-25"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   secretStoreRef:
     kind: ClusterSecretStore

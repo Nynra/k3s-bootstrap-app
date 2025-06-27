@@ -4,4 +4,4 @@ metadata:
   name: dashboard-user
   namespace: {{ .Values.kubDashboard.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "30"

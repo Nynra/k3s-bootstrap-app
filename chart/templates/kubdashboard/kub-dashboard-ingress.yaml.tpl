@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.kubDashboard.namespace }}
   annotations:
     kubernetes.io/ingress.class: traefik-external
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "30"
 spec:
   entryPoints:
     - websecure

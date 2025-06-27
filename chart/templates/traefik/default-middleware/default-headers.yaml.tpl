@@ -4,7 +4,7 @@ metadata:
   name: default-headers
   namespace: {{ .Values.traefik.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "-7"
+    argocd.argoproj.io/sync-wave: "23"
 spec:
   headers:
     browserXssFilter: true
