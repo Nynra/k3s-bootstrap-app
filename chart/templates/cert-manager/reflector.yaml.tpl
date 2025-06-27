@@ -15,7 +15,7 @@ spec:
     targetRevision: {{ .Values.reflector.targetRevision }}
   destination:
     server: {{ .Values.global.argocdConfig.server }}
-    namespace: {{ .Values.cert-manager.namespace }}
+    namespace: {{ .Values.certManager.namespace }}
   syncPolicy:
     automated:
       prune: true
