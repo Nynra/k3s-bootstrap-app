@@ -13,113 +13,11 @@ traefik:
   replicas: 3
   loadBalancerIP: 192.168.3.80
 
-  dashboard:
-    enabled: true
-    ingressUrl: "traefik.example.com"
-    tlsSecretName: example-com-tls
-
-traefikMiddlewares:
-  crowdsecBouncerVersion: v1.3.3
-  localOnlyAllowlist:
-    localIpCIDRs:
-      # Can also be restricted to certain subnets
-      - 192.168.0.0/16 # 192.168.x.x
-
 certManager:
   name: cert-manager
   namespace: cert-manager
   targetRevision: v1.17.2
   replicas: 3
-
-  issuers:
-    - name: cloudflare-issuer-example
-      namespace: cert-manager
-      email: example@example.com
-      server: https://acme-staging-v02.api.letsencrypt.org/directory
-      externalSecret:
-        name: cloudflare-issuer-example-secret
-        remoteSecretName: cloudflare-issuer-secret
-        remoteSecretStore: kubernetes
-        tokenPropertyName: password
-      domains:
-        - example1.com
-        - example2.com
-      # Add more domains as needed
-
-  certs:
-    - name: example-com-tls
-      namespace: cert-manager
-      secretName: example-com-tls
-      clusterIssuer: letsencrypt-staging
-      commonName: example.com
-      dnsNames:
-        - example.com
-        - "*.example.com"
-      # Add more domains as needed
-
-crowdsec:
-  targetRevision: 0.19.3
-  namespace: crowdsec
-  disableOnlineApi: "true"
-  config:
-    config_yaml_local: |
-      api:
-        server:
-          auto_registration: # Activate if not using TLS for authentication
-            enabled: true
-            token: "${REGISTRATION_TOKEN}" # /!\ Do not modify this variable (auto-generated and handled by the chart)
-            allowed_ranges: # /!\ Make sure to adapt to the pod IP ranges used by your cluster
-              - "127.0.0.1/32"
-              - "192.168.0.0/16"
-              - "10.0.0.0/8"
-              - "172.16.0.0/12"
-      # This block was the problem. It needs to be indented.
-      db_config:
-        flush:
-          agents_autodelete:
-            ## Flush both login types if the machine has not logged in for 60 minutes or more
-            cert: 60m # This is TLS client authentication
-            login_password: 60m # This includes the auto registration token as well
-
-  externalSecret:
-    name: "crowdsec-secret"
-    remoteSecretName: "crowdsec-credentials"
-    remoteSecretStore: "kubernetes"
-    csLapiSecretPropertyName: "lapi_secret"
-    registrationTokenPropertyName: "registration_token"
-    enrollKeyPropertyName: "enroll_key"
-
-  dashboard:
-    enabled: false
-    # resources:
-    #   {}
-    # limits:
-    #   memory: 1Gi
-    #   cpu: 500m
-    # requests:
-    #   cpu: 500m
-    #   memory: 1Gi
-
-  agent:
-    enabled: true
-    isDeployment: false
-
-  appsec:
-    enabled: false
-
-kubDashboard:
-  namespace: kubernetes-dashboard
-  targetRevision: 7.13.0
-  clusterName: "example-cluster"
-  ingressUrl: "dash.example.com"
-  tlsSecretName: example-com-tls
-
-  externalSecret:
-    name: kubernetes-dashboard-auth
-    refreshInterval: "1h"
-    remoteSecretName: "kubernetes-dashboard-auth"
-    remoteSecretStore: "kubernetes"
-    tokenProperty: "password"
 
 longhorn:
   namespace: longhorn-system
@@ -129,13 +27,6 @@ longhorn:
   defaultStorageClass: true
   defaultStorageReplicaCount: 2
   defaultMigratable: true
-
-  dashboard:
-    enabled: true
-    replicaCount: 1
-    serviceType: ClusterIP # LoadBalancer can be used for debugging
-    tlsSecretName: example-com-tls
-    ingressUrl: "longhorn.example.com"
 
 reflector:
   # Reflector is only used to sync certificates between namespaces
@@ -151,9 +42,3 @@ eks:
   onepasswordOperator:
     namespace: external-secrets
     targetRevision: 0.17.0
-
-mainVault:
-  name: main-vault
-  vaultName: homelab-vault
-  connectTokenSecretName: onepassword-connect-token
-  connectTokenNamespace: external-secrets
