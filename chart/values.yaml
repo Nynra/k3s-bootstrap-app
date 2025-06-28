@@ -35,6 +35,7 @@ certManager:
     - name: cloudflare-issuer-example
       namespace: cert-manager
       email: example@example.com
+      privateSecretKeyName: cloudflare-issuer-example-secret
       server: https://acme-staging-v02.api.letsencrypt.org/directory
       externalSecret:
         name: cloudflare-issuer-example-secret
