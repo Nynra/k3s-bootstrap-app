@@ -1,25 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: reflector
+  name: kub-dashboard
   namespace: {{ .Values.global.argocdConfig.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "32"
 spec:
   project: {{ .Values.project }}
   source:
-    repoURL: https://emberstack.github.io/helm-charts
-    chart: reflector
-    targetRevision: {{ .Values.reflector.targetRevision }}
+      repoURL: https://kubernetes.github.io/dashboard/
+      chart: kubernetes-dashboard
+      targetRevision: {{ .Values.kubDashboard.targetRevision }}
   destination:
     server: {{ .Values.global.argocdConfig.server }}
-    namespace: {{ .Values.certManager.namespace }}
+    namespace: {{ .Values.kubDashboard.namespace }}
   syncPolicy:
     automated:
-      prune: true
       selfHeal: true
+      prune: true
     syncOptions:
       - CreateNamespace=true
