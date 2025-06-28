@@ -30,19 +30,6 @@ spec:
           # - "--entrypoints.web.http.middlewares=traefik-crowdsec-bouncer@kubernetescrd"
           # - "--entrypoints.websecure.http.middlewares=traefik-crowdsec-bouncer@kubernetescrd"
 
-        # experimental:
-        #   plugins:
-        #     crowdsec-bouncer:
-        #       moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-        #       version: {{ .Values.traefikMiddlewares.crowdsecBouncerVersion }}
-
-        #       crowdsecMode: appsec
-        #       crowdsecAppsecEnabled: false
-        #       # crowdsecAppsecHost: crowdsec-appsec-service:7422
-        #       crowdsecLapiScheme: http
-        #       crowdsecLapiHost: crowdsec-service:8080
-        #       crowdsecLapiKeyFile: /etc/traefik/secrets/crowdsec-lapi/key
-
         deployment:
           enabled: true
           replicas: {{ .Values.traefik.replicas }}

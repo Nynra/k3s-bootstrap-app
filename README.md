@@ -36,3 +36,16 @@ During installation argocd validation has to be turned off as the app references
 -10: traefik
 -5 : longhorn
  0 : dashboard
+
+        # experimental:
+        #   plugins:
+        #     crowdsec-bouncer:
+        #       moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+        #       version: {{ .Values.traefikMiddlewares.crowdsecBouncerVersion }}
+
+        #       crowdsecMode: appsec
+        #       crowdsecAppsecEnabled: false
+        #       # crowdsecAppsecHost: crowdsec-appsec-service:7422
+        #       crowdsecLapiScheme: http
+        #       crowdsecLapiHost: crowdsec-service:8080
+        #       crowdsecLapiKeyFile: /etc/traefik/secrets/crowdsec-lapi/key
