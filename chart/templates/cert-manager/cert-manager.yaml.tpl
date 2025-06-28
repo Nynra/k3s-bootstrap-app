@@ -7,6 +7,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "10"
+    argocd.argoproj.io/hook: PreSync
 spec:
   project: {{ .Values.project }}
   destination:
