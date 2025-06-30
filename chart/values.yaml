@@ -45,4 +45,15 @@ eks:
 
 kubePrometheusStack:
   namespace: monitoring
-  targetRevision: 0.15.0
+  targetRevision: 75.6.1
+
+  managerIps:
+    - 192.168.1.100
+
+  grafana:
+    externalSecret:
+      name: grafana-admin-password
+      remoteSecretName: "GrafanaAdminCredentials"
+      remoteSecretStore: "main-vault"
+      userPropertyName: "username"
+      passwordPropertyName: "password"

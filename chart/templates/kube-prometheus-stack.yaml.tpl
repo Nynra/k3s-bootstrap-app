@@ -7,7 +7,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
-    argocd.argoproj.io/sync-options: Validate=false
 spec:
   project: {{ .Values.project }}
   destination:
@@ -17,6 +16,11 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: kube-prometheus-stack
     targetRevision: {{ .Values.kubePrometheusStack.targetRevision }}
+    helm:
+      values: |
+        grafana:
+          defaultDashboardsTimezone: utc
+          defaultDashboardsInterval: 1m
   syncPolicy:
     automated:
       prune: true
