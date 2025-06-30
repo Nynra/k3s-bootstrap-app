@@ -37,11 +37,11 @@ reflector:
 eks:
   onepasswordConnect:
     namespace: external-secrets
-    targetRevision: 1.17.0
+    targetRevision: 2.0.0
 
   onepasswordOperator:
     namespace: external-secrets
-    targetRevision: 0.17.0
+    targetRevision: 0.18.1
 
 kubePrometheusStack:
   namespace: monitoring
