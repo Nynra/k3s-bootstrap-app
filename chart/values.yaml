@@ -43,17 +43,9 @@ eks:
     namespace: external-secrets
     targetRevision: 0.18.1
 
-kubePrometheusStack:
+prometheus:
   namespace: monitoring
   targetRevision: 75.6.1
 
   managerIps:
     - 192.168.1.100
-
-  grafana:
-    externalSecret:
-      name: grafana-admin-password
-      remoteSecretName: "GrafanaAdminCredentials"
-      remoteSecretStore: "main-vault"
-      userPropertyName: "username"
-      passwordPropertyName: "password"

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack-app
+  name: prometheus
   namespace: {{ .Values.global.argocdConfig.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,11 +11,11 @@ spec:
   project: {{ .Values.project }}
   destination:
     server: {{ .Values.global.argocdConfig.server }}
-    namespace: {{ .Values.kubePrometheusStack.namespace }}
+    namespace: {{ .Values.prometheus.namespace }}
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: kube-prometheus-stack
-    targetRevision: {{ .Values.kubePrometheusStack.targetRevision }}
+    targetRevision: {{ .Values.prometheus.targetRevision }}
     helm:
       values: |
         grafana:
