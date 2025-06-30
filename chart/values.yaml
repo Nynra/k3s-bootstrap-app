@@ -42,3 +42,7 @@ eks:
   onepasswordOperator:
     namespace: external-secrets
     targetRevision: 0.17.0
+
+kubePrometheusStack:
+  namespace: monitoring
+  targetRevision: 75.6.1
