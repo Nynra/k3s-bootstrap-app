@@ -25,7 +25,7 @@ spec:
           defaultDashboardsInterval: 1m
           ingress:
             enabled: false
-            ingressClassName: traefik-external
+            ingressClassName: traefik
             annotations:
               kubernetes.io/ingress.class: traefik-external
             hosts:
