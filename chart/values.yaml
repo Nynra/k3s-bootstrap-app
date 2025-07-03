@@ -43,9 +43,9 @@ eks:
     namespace: external-secrets
     targetRevision: 0.18.1
 
-# prometheus:
-#   namespace: monitoring
-#   targetRevision: 75.6.1
+prometheus:
+  namespace: monitoring
+  targetRevision: 75.6.1
 
-#   managerIps:
-#     - 192.168.1.100
+  managerIps:
+    - 192.168.1.100
