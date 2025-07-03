@@ -19,8 +19,21 @@ spec:
     helm:
       values: |
         grafana:
+          enabled: true
+          defaultDashboardsEnabled: true
           defaultDashboardsTimezone: utc
           defaultDashboardsInterval: 1m
+          ingress:
+            enabled: false
+            ingressClassName: traefik-external
+            annotations:
+              kubernetes.io/ingress.class: traefik-external
+            hosts:
+              - {{ .Values.grafana.ingressUrl }}
+            tls:
+              - secretName: {{ .Values.grafana.externalCert.name }}
+                hosts:
+                  - {{ .Values.grafana.ingressUrl }}
   syncPolicy:
     automated:
       prune: true
