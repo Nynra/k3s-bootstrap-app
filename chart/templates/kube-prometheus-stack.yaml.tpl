@@ -24,7 +24,7 @@ spec:
           defaultDashboardsTimezone: utc
           defaultDashboardsInterval: 1m
           ingress:
-            enabled: false
+            enabled: true
             ingressClassName: traefik
             annotations:
               kubernetes.io/ingress.class: traefik-external
